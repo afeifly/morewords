@@ -6,11 +6,14 @@ from flask_restful import Api
 app = Flask(__name__)
 api = Api(app)
 
-from resources import TodoListResource
-from resources import TodoResource
-from resources import UserResource
+from resources.todo import TodoListResource
+from resources.todo import TodoResource
+from resources.user import UserListResource
+from resources.user import UserResource
 
-api.add_resource(UserResource, '/users/<string:id>', endpoint='todo')
+api.add_resource(UserResource, '/login', endpoint='login')
+api.add_resource(UserResource, '/users/<string:id>', endpoint='user')
+api.add_resource(UserListResource, '/users', endpoint='users')
 api.add_resource(TodoListResource, '/todos', endpoint='todos')
 api.add_resource(TodoResource, '/todos/<string:id>', endpoint='todo')
 
